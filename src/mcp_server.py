@@ -19,7 +19,7 @@ from datetime import datetime
 
 from fastapi import FastAPI, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, StreamingResponse
 import uvicorn
 
 # srcディレクトリをパスに追加
@@ -42,7 +42,7 @@ logger = logging.getLogger("mcp_server")
 # ========================================
 PROTOCOL_VERSION = "2025-06-18"
 SERVER_NAME = "zenithfall-photo-alchemy"
-SERVER_VERSION = "0.2.0"
+SERVER_VERSION = "0.3.0"  # SSE対応版
 
 # ========================================
 # FastAPI App
@@ -436,12 +436,58 @@ async def health():
 
 @app.post("/mcp")
 async def mcp_endpoint(request: Request):
-    """MCPプロトコルエンドポイント"""
+    """MCPプロトコルエンドポイント（SSE対応 - ChatGPT Apps SDK用）"""
     user_id = get_user_id(request)
     
     try:
         body = await request.json()
         logger.debug(f"MCP Request: {json.dumps(body, ensure_ascii=False)[:500]}")
+    except Exception as e:
+        # パースエラーもSSE形式で返す
+        async def error_stream():
+            error_response = {
+                "jsonrpc": "2.0",
+                "error": {"code": -32700, "message": "Parse error"},
+                "id": None
+            }
+            yield f"data: {json.dumps(error_response)}\n\n"
+        
+        return StreamingResponse(
+            error_stream(),
+            media_type="text/event-stream",
+            headers={"Cache-Control": "no-cache", "Connection": "keep-alive"}
+        )
+    
+    async def generate():
+        # バッチリクエスト対応
+        if isinstance(body, list):
+            for req in body:
+                response = dispatch_jsonrpc(req, user_id)
+                logger.debug(f"MCP Response: {json.dumps(response, ensure_ascii=False)[:500]}")
+                yield f"data: {json.dumps(response, ensure_ascii=False)}\n\n"
+        else:
+            response = dispatch_jsonrpc(body, user_id)
+            logger.debug(f"MCP Response: {json.dumps(response, ensure_ascii=False)[:500]}")
+            yield f"data: {json.dumps(response, ensure_ascii=False)}\n\n"
+    
+    return StreamingResponse(
+        generate(),
+        media_type="text/event-stream",
+        headers={
+            "Cache-Control": "no-cache",
+            "Connection": "keep-alive",
+        }
+    )
+
+# 従来のJSONエンドポイント（デバッグ・curl用に残す）
+@app.post("/mcp/json")
+async def mcp_json_endpoint(request: Request):
+    """MCPプロトコルエンドポイント（JSON形式 - デバッグ用）"""
+    user_id = get_user_id(request)
+    
+    try:
+        body = await request.json()
+        logger.debug(f"MCP JSON Request: {json.dumps(body, ensure_ascii=False)[:500]}")
     except Exception as e:
         return JSONResponse(
             status_code=400,
@@ -458,18 +504,8 @@ async def mcp_endpoint(request: Request):
         return JSONResponse(content=responses)
     else:
         response = dispatch_jsonrpc(body, user_id)
-        logger.debug(f"MCP Response: {json.dumps(response, ensure_ascii=False)[:500]}")
+        logger.debug(f"MCP JSON Response: {json.dumps(response, ensure_ascii=False)[:500]}")
         return JSONResponse(content=response)
-
-# SSEエンドポイント（ChatGPT Apps SDK用）
-@app.get("/mcp/sse")
-async def mcp_sse():
-    """SSEエンドポイント（プレースホルダー）"""
-    # 現時点ではSSEは未実装
-    return JSONResponse(
-        status_code=501,
-        content={"error": "SSE not implemented"}
-    )
 
 # ========================================
 # メイン
