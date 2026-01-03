@@ -1,0 +1,404 @@
+{
+  "version": "1.3",
+  "updated_at": "2026-01-02",
+  "changelog": [
+    "v1.0: 初版",
+    "v1.1: rank数値追加、region_id追加、catalyst_drop_table重み付き",
+    "v1.2: arkhald統一、catalyst_drops削除、catalyst_id統一",
+    "v1.3: regions.id削除（region_idに統一）、equipment_bonus構造化"
+  ],
+
+  "rank_requirements": {
+    "1": { 
+      "name": "ルーキー", 
+      "min_total_stats": 40,
+      "recommended_total_stats": 40,
+      "slots": 2 
+    },
+    "2": { 
+      "name": "中級", 
+      "min_total_stats": 50,
+      "recommended_total_stats": 75,
+      "slots": 3 
+    },
+    "3": { 
+      "name": "上級", 
+      "min_total_stats": 70,
+      "recommended_total_stats": 100,
+      "slots": 4 
+    },
+    "4": { 
+      "name": "達人", 
+      "min_total_stats": 90,
+      "recommended_total_stats": 125,
+      "slots": 4 
+    },
+    "5": { 
+      "name": "伝説", 
+      "min_total_stats": 110,
+      "recommended_total_stats": 150,
+      "slots": 5 
+    }
+  },
+
+  "regions": {
+    "arkhald": {
+      "region_id": "arkhald",
+      "name_ja": "アークハルド王国",
+      "name_en": "Arkhald Kingdom",
+      "nation_name_ja": "アークハルド王国",
+      "nation_name_en": "Kingdom of Arkhald",
+      "rank": 1,
+      "position": "後方拠点",
+      "status": "safe",
+      "race": "hume",
+      "description": "人類最後の砦。錬金術師の研究・育成拠点。",
+      "atmosphere": "安全圏、チュートリアル向き",
+      "story_meaning": "まずは生き残るための基礎を学べ"
+    },
+    "myarca": {
+      "region_id": "myarca",
+      "name_ja": "ミャルカ自由市群",
+      "name_en": "Myarca Free Cities",
+      "nation_name_ja": "ミャルカ自由市連合",
+      "nation_name_en": "Myarca Free City Alliance",
+      "rank": 2,
+      "position": "交易・情報",
+      "status": "contested",
+      "race": "felina",
+      "description": "地下水路と廃都を繋ぐ交易ネットワーク国家。",
+      "atmosphere": "文明の残骸、素材バリエーション",
+      "story_meaning": "力の前に、情報と取引を覚えろ"
+    },
+    "tygarl": {
+      "region_id": "tygarl",
+      "name_ja": "タイガル戦候国",
+      "name_en": "Tygarl Wardom",
+      "nation_name_ja": "タイガル戦候国",
+      "nation_name_en": "Tygarl Wardom",
+      "rank": 3,
+      "position": "前線・激戦区",
+      "status": "warzone",
+      "race": "tigr",
+      "description": "魔王軍とぶつかる前線国家。",
+      "atmosphere": "戦場、実戦経験",
+      "story_meaning": "覚悟はあるか。ここから先は遊びじゃない"
+    },
+    "fenrios": {
+      "region_id": "fenrios",
+      "name_ja": "フェンリオス防衛連盟",
+      "name_en": "Fenrios Defense League",
+      "nation_name_ja": "フェンリオス防衛連盟",
+      "nation_name_en": "Fenrios Defense League",
+      "rank": 4,
+      "position": "最前線・絶対防衛線",
+      "status": "critical",
+      "race": "lupus",
+      "description": "抜かれたら終わる壁。生還と防御の国。",
+      "atmosphere": "極限、守護",
+      "story_meaning": "守る者の覚悟。ここを抜かれたら終わる"
+    },
+    "luminarth": {
+      "region_id": "luminarth",
+      "name_ja": "リュミナ森林王庭",
+      "name_en": "Luminarth Forest Court",
+      "nation_name_ja": "リュミナ森林王庭",
+      "nation_name_en": "Luminarth Forest Court",
+      "rank": 5,
+      "position": "滅亡地帯",
+      "status": "fallen",
+      "race": "sylva",
+      "description": "黒化した森。失われた美と最後の希望。",
+      "atmosphere": "喪失、伝説",
+      "story_meaning": "滅びの中心で、希望の素材を拾う"
+    }
+  },
+
+  "dungeons": {
+    "rank_1": [
+      {
+        "id": "r1_training_grounds",
+        "rank": 1,
+        "region_id": "arkhald",
+        "name_ja": "始まりの訓練場",
+        "name_en": "Beginner's Training Grounds",
+        "difficulty": 1,
+        "base_success_rate": 0.95,
+        "description": "新米デモンベインの訓練場。安全だが、油断は禁物。",
+        "enemy_types": ["slime", "goblin_weak"],
+        "catalyst_drop_table": [
+          { "catalyst_id": "cat_r1_training_stone", "weight": 50 },
+          { "catalyst_id": "cat_r1_dried_herb", "weight": 50 }
+        ]
+      },
+      {
+        "id": "r1_underground_waterway",
+        "rank": 1,
+        "region_id": "arkhald",
+        "name_ja": "王国の地下水路",
+        "name_en": "Kingdom Underground Waterway",
+        "difficulty": 2,
+        "base_success_rate": 0.90,
+        "description": "王国の地下を走る水路。暗く、湿っている。",
+        "enemy_types": ["rat", "slime", "goblin"],
+        "catalyst_drop_table": [
+          { "catalyst_id": "cat_r1_rusted_iron", "weight": 40 },
+          { "catalyst_id": "cat_r1_rotted_wood", "weight": 35 },
+          { "catalyst_id": "cat_r1_worn_leather", "weight": 25 }
+        ]
+      }
+    ],
+    "rank_2": [
+      {
+        "id": "r2_trade_route_ruins",
+        "rank": 2,
+        "region_id": "myarca",
+        "name_ja": "廃都の交易路",
+        "name_en": "Ruined Trade Route",
+        "difficulty": 3,
+        "base_success_rate": 0.85,
+        "description": "かつて栄えた交易路の跡。今は盗賊と魔物の巣窟。",
+        "enemy_types": ["bandit", "wolf", "thief_cat"],
+        "catalyst_drop_table": [
+          { "catalyst_id": "cat_r2_exotic_silk", "weight": 50 },
+          { "catalyst_id": "cat_r2_ancient_coin", "weight": 50 }
+        ]
+      },
+      {
+        "id": "r2_shadow_market",
+        "rank": 2,
+        "region_id": "myarca",
+        "name_ja": "影の市場",
+        "name_en": "Shadow Market",
+        "difficulty": 4,
+        "base_success_rate": 0.80,
+        "description": "地下に広がる闇市場。何でも売っている…危険も。",
+        "enemy_types": ["assassin", "shadow_cat", "merchant_golem"],
+        "catalyst_drop_table": [
+          { "catalyst_id": "cat_r2_merchant_map", "weight": 30 },
+          { "catalyst_id": "cat_r2_ruin_glass", "weight": 35 },
+          { "catalyst_id": "cat_r2_smuggled_wood", "weight": 35 }
+        ]
+      }
+    ],
+    "rank_3": [
+      {
+        "id": "r3_scorched_wasteland",
+        "rank": 3,
+        "region_id": "tygarl",
+        "name_ja": "灼熱の荒野",
+        "name_en": "Scorched Wasteland",
+        "difficulty": 5,
+        "base_success_rate": 0.75,
+        "description": "戦火で焼けた大地。魔王軍の前哨がある。",
+        "enemy_types": ["war_tiger", "demon_soldier", "fire_elemental"],
+        "catalyst_drop_table": [
+          { "catalyst_id": "cat_r3_warrior_steel", "weight": 50 },
+          { "catalyst_id": "cat_r3_beast_fang", "weight": 50 }
+        ]
+      },
+      {
+        "id": "r3_warrior_graveyard",
+        "rank": 3,
+        "region_id": "tygarl",
+        "name_ja": "戦士の墓標",
+        "name_en": "Warrior's Graveyard",
+        "difficulty": 6,
+        "base_success_rate": 0.70,
+        "description": "数多の戦士が眠る場所。英霊の怨念が漂う。",
+        "enemy_types": ["undead_warrior", "ghost_tiger", "cursed_armor"],
+        "catalyst_drop_table": [
+          { "catalyst_id": "cat_r3_charred_flag", "weight": 30 },
+          { "catalyst_id": "cat_r3_hero_bone", "weight": 35 },
+          { "catalyst_id": "cat_r3_cursed_metal", "weight": 35 }
+        ]
+      }
+    ],
+    "rank_4": [
+      {
+        "id": "r4_frozen_mountains",
+        "rank": 4,
+        "region_id": "fenrios",
+        "name_ja": "極寒の雪山",
+        "name_en": "Frozen Mountains",
+        "difficulty": 7,
+        "base_success_rate": 0.65,
+        "description": "永遠の冬に閉ざされた山岳地帯。",
+        "enemy_types": ["ice_wolf", "frost_demon", "blizzard_elemental"],
+        "catalyst_drop_table": [
+          { "catalyst_id": "cat_r4_mithril", "weight": 50 },
+          { "catalyst_id": "cat_r4_ice_crystal", "weight": 50 }
+        ]
+      },
+      {
+        "id": "r4_absolute_defense_line",
+        "rank": 4,
+        "region_id": "fenrios",
+        "name_ja": "絶対防衛線",
+        "name_en": "Absolute Defense Line",
+        "difficulty": 8,
+        "base_success_rate": 0.60,
+        "description": "最前線の防衛陣地。魔王軍本隊との戦場。",
+        "enemy_types": ["demon_general", "hellhound", "siege_beast"],
+        "catalyst_drop_table": [
+          { "catalyst_id": "cat_r4_holy_water", "weight": 30 },
+          { "catalyst_id": "cat_r4_oath_stone", "weight": 35 },
+          { "catalyst_id": "cat_r4_guardian_iron", "weight": 35 }
+        ]
+      }
+    ],
+    "rank_5": [
+      {
+        "id": "r5_crystallized_forest",
+        "rank": 5,
+        "region_id": "luminarth",
+        "name_ja": "結晶化した森",
+        "name_en": "Crystallized Forest",
+        "difficulty": 9,
+        "base_success_rate": 0.55,
+        "description": "黒化して結晶になった森。美しく、恐ろしい。",
+        "enemy_types": ["crystal_treant", "shadow_elf", "memory_phantom"],
+        "catalyst_drop_table": [
+          { "catalyst_id": "cat_r5_world_tree_branch", "weight": 50 },
+          { "catalyst_id": "cat_r5_memory_crystal", "weight": 50 }
+        ]
+      },
+      {
+        "id": "r5_demon_castle_gate",
+        "rank": 5,
+        "region_id": "luminarth",
+        "name_ja": "魔王城の門",
+        "name_en": "Demon Castle Gate",
+        "difficulty": 10,
+        "base_success_rate": 0.50,
+        "description": "魔王ヴァル＝ノクスの居城への入り口。",
+        "enemy_types": ["demon_lord_guard", "void_walker", "nightmare"],
+        "catalyst_drop_table": [
+          { "catalyst_id": "cat_r5_orichalcum", "weight": 30 },
+          { "catalyst_id": "cat_r5_purification_shard", "weight": 35 },
+          { "catalyst_id": "cat_r5_blackened_sap", "weight": 35 }
+        ]
+      }
+    ]
+  },
+
+  "catalysts_by_rank": {
+    "rank_1": [
+      { "catalyst_id": "cat_r1_rusted_iron", "name_ja": "錆びた鉄塊", "name_en": "Rusted Iron Chunk", "material": "metal", "essence": "defense" },
+      { "catalyst_id": "cat_r1_rotted_wood", "name_ja": "朽ちた木材", "name_en": "Rotted Wood", "material": "wood", "essence": "preserve" },
+      { "catalyst_id": "cat_r1_worn_leather", "name_ja": "ボロ革", "name_en": "Worn Leather", "material": "leather", "essence": "defense" },
+      { "catalyst_id": "cat_r1_training_stone", "name_ja": "訓練用の石", "name_en": "Training Stone", "material": "stone_glass", "essence": "attack" },
+      { "catalyst_id": "cat_r1_dried_herb", "name_ja": "乾燥薬草", "name_en": "Dried Herb", "material": "organic", "essence": "heal" }
+    ],
+    "rank_2": [
+      { "catalyst_id": "cat_r2_exotic_silk", "name_ja": "異国の絹", "name_en": "Exotic Silk", "material": "cloth", "essence": "move" },
+      { "catalyst_id": "cat_r2_ancient_coin", "name_ja": "古代硬貨", "name_en": "Ancient Coin", "material": "metal", "essence": "preserve" },
+      { "catalyst_id": "cat_r2_merchant_map", "name_ja": "商人の地図紙", "name_en": "Merchant's Map", "material": "paper", "essence": "knowledge" },
+      { "catalyst_id": "cat_r2_ruin_glass", "name_ja": "廃都のガラス片", "name_en": "Ruin Glass Shard", "material": "stone_glass", "essence": "light" },
+      { "catalyst_id": "cat_r2_smuggled_wood", "name_ja": "密輸の香木", "name_en": "Smuggled Fragrant Wood", "material": "organic", "essence": "control" }
+    ],
+    "rank_3": [
+      { "catalyst_id": "cat_r3_warrior_steel", "name_ja": "戦士の鋼", "name_en": "Warrior's Steel", "material": "metal", "essence": "attack" },
+      { "catalyst_id": "cat_r3_beast_fang", "name_ja": "魔獣の牙", "name_en": "Beast Fang", "material": "organic", "essence": "destroy" },
+      { "catalyst_id": "cat_r3_charred_flag", "name_ja": "焦げた軍旗", "name_en": "Charred War Banner", "material": "cloth", "essence": "dark" },
+      { "catalyst_id": "cat_r3_hero_bone", "name_ja": "英霊の骨片", "name_en": "Hero's Bone Fragment", "material": "organic", "essence": "time" },
+      { "catalyst_id": "cat_r3_cursed_metal", "name_ja": "呪われた金属", "name_en": "Cursed Metal", "material": "metal", "essence": "dark" }
+    ],
+    "rank_4": [
+      { "catalyst_id": "cat_r4_mithril", "name_ja": "ミスリル鉱石", "name_en": "Mithril Ore", "material": "metal", "essence": "light" },
+      { "catalyst_id": "cat_r4_holy_water", "name_ja": "聖水の結晶", "name_en": "Holy Water Crystal", "material": "stone_glass", "essence": "heal" },
+      { "catalyst_id": "cat_r4_oath_stone", "name_ja": "誓約の石板", "name_en": "Oath Stone Tablet", "material": "stone_glass", "essence": "defense" },
+      { "catalyst_id": "cat_r4_ice_crystal", "name_ja": "氷狼の毛皮", "name_en": "Ice Wolf Pelt", "material": "leather", "essence": "preserve" },
+      { "catalyst_id": "cat_r4_guardian_iron", "name_ja": "守護者の鉄", "name_en": "Guardian's Iron", "material": "metal", "essence": "defense" }
+    ],
+    "rank_5": [
+      { "catalyst_id": "cat_r5_world_tree_branch", "name_ja": "世界樹の枝", "name_en": "World Tree Branch", "material": "wood", "essence": "create" },
+      { "catalyst_id": "cat_r5_orichalcum", "name_ja": "オリハルコン", "name_en": "Orichalcum", "material": "metal", "essence": "create" },
+      { "catalyst_id": "cat_r5_memory_crystal", "name_ja": "記憶の結晶", "name_en": "Memory Crystal", "material": "stone_glass", "essence": "time" },
+      { "catalyst_id": "cat_r5_blackened_sap", "name_ja": "黒化した樹液", "name_en": "Blackened Sap", "material": "organic", "essence": "dark" },
+      { "catalyst_id": "cat_r5_purification_shard", "name_ja": "祓魔の欠片", "name_en": "Purification Shard", "material": "metal", "essence": "light" }
+    ]
+  },
+
+  "memory_dungeons": {
+    "description": "Phase5 + ランク条件達成で解放される、ガーディアンの記憶に触れるダンジョン",
+    "unlock_conditions": {
+      "affection_phase": 5,
+      "rank_minimum": 3
+    },
+    "locations": [
+      {
+        "race": "hume",
+        "region_id": "arkhald",
+        "rank": 3,
+        "dungeon_id": "memory_hume",
+        "name_ja": "記憶の回廊（人間圏深層）",
+        "name_en": "Corridor of Memory (Deep Human Zone)",
+        "difficulty": 7,
+        "base_success_rate": 0.60
+      },
+      {
+        "race": "sylva",
+        "region_id": "luminarth",
+        "rank": 5,
+        "dungeon_id": "memory_sylva",
+        "name_ja": "追憶の森（滅びた森の最奥）",
+        "name_en": "Forest of Reminiscence (Deepest Fallen Woods)",
+        "difficulty": 10,
+        "base_success_rate": 0.45
+      },
+      {
+        "race": "felina",
+        "region_id": "myarca",
+        "rank": 3,
+        "dungeon_id": "memory_felina",
+        "name_ja": "忘却の迷路（地下迷宮の隠し通路）",
+        "name_en": "Labyrinth of Oblivion (Hidden Underground Passage)",
+        "difficulty": 7,
+        "base_success_rate": 0.60
+      },
+      {
+        "race": "tigr",
+        "region_id": "tygarl",
+        "rank": 4,
+        "dungeon_id": "memory_tigr",
+        "name_ja": "英霊の間（戦場跡の最深部）",
+        "name_en": "Hall of Heroes (Deepest Battlefield Ruins)",
+        "difficulty": 8,
+        "base_success_rate": 0.55
+      },
+      {
+        "race": "lupus",
+        "region_id": "fenrios",
+        "rank": 4,
+        "dungeon_id": "memory_lupus",
+        "name_ja": "誓いの塔（防衛線の心臓部）",
+        "name_en": "Tower of Oaths (Heart of the Defense Line)",
+        "difficulty": 9,
+        "base_success_rate": 0.50
+      }
+    ],
+    "rewards": ["secret_chapter_unlock", "memory_fragment", "unique_voice_line"]
+  },
+
+  "exploration_rules": {
+    "daily_limit": 1,
+    "support_styles": ["heal", "guard", "none"],
+    "retreat_allowed": true,
+    "retreat_penalty": "no_drops",
+    "survival_bonus": {
+      "affection": 0.5,
+      "drops": "catalyst_1_guaranteed"
+    },
+    "success_rate_modifiers": {
+      "support_heal": 0.05,
+      "support_guard": 0.10,
+      "equipment_bonus": {
+        "per_stat_point": 0.005,
+        "stat_types": ["ATK", "DEF", "AGI", "MAG", "VIT"],
+        "cap": 0.20,
+        "formula_description": "total_stats × per_stat_point、最大20%"
+      }
+    }
+  }
+}

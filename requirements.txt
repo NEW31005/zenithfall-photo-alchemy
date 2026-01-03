@@ -1,0 +1,11 @@
+# Zenithfall Photo Alchemy - Dependencies
+
+# Web Framework
+fastapi==0.115.6
+uvicorn[standard]==0.30.6
+
+# Data Validation
+pydantic==2.9.2
+
+# Utilities
+python-multipart==0.0.9

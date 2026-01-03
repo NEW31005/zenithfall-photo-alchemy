@@ -1,0 +1,233 @@
+{
+  "version": "1.0",
+  "updated_at": "2026-01-02",
+
+  "materials": {
+    "metal": {
+      "id": "metal",
+      "name_ja": "金属",
+      "name_en": "Metal",
+      "description": "鉄、銅、金、銀など。硬く、加工すれば武具になる。",
+      "photo_hints": ["鍵", "硬貨", "金具", "スプーン", "フォーク", "缶", "ネジ", "クリップ"],
+      "stat_affinity": ["ATK", "DEF"]
+    },
+    "wood": {
+      "id": "wood",
+      "name_ja": "木材",
+      "name_en": "Wood",
+      "description": "樹木由来の素材。柔軟で、杖や柄に向く。",
+      "photo_hints": ["箸", "鉛筆", "割り箸", "木製家具", "本棚", "まな板"],
+      "stat_affinity": ["VIT", "MAG"]
+    },
+    "cloth": {
+      "id": "cloth",
+      "name_ja": "布",
+      "name_en": "Cloth",
+      "description": "織られた繊維。軽く、身を包むものになる。",
+      "photo_hints": ["タオル", "シャツ", "靴下", "カーテン", "ハンカチ", "マスク"],
+      "stat_affinity": ["AGI", "DEF"]
+    },
+    "leather": {
+      "id": "leather",
+      "name_ja": "革",
+      "name_en": "Leather",
+      "description": "動物の皮を加工したもの。丈夫で柔軟。",
+      "photo_hints": ["財布", "ベルト", "革靴", "カバン", "グローブ"],
+      "stat_affinity": ["DEF", "VIT"]
+    },
+    "stone_glass": {
+      "id": "stone_glass",
+      "name_ja": "ガラス・石",
+      "name_en": "Stone/Glass",
+      "description": "鉱物や硝子。硬く、光を通すものもある。",
+      "photo_hints": ["コップ", "窓", "眼鏡", "瓶", "花瓶", "石ころ", "タイル"],
+      "stat_affinity": ["MAG", "DEF"]
+    },
+    "paper": {
+      "id": "paper",
+      "name_ja": "紙",
+      "name_en": "Paper",
+      "description": "薄く平たい記録媒体。知識を宿す。",
+      "photo_hints": ["本", "ノート", "チラシ", "レシート", "名刺", "新聞", "カレンダー"],
+      "stat_affinity": ["MAG", "AGI"]
+    },
+    "plastic": {
+      "id": "plastic",
+      "name_ja": "プラスチック",
+      "name_en": "Plastic",
+      "description": "人工の柔軟素材。現代文明の象徴。",
+      "photo_hints": ["リモコン", "ペン", "定規", "ボトル", "キーボード", "マウス", "充電器"],
+      "stat_affinity": ["AGI", "MAG"]
+    },
+    "organic": {
+      "id": "organic",
+      "name_ja": "有機物",
+      "name_en": "Organic",
+      "description": "生命由来の素材。食物、植物、骨など。",
+      "photo_hints": ["果物", "野菜", "花", "葉っぱ", "卵", "パン", "肉", "魚"],
+      "stat_affinity": ["VIT", "MAG"]
+    },
+    "ceramic": {
+      "id": "ceramic",
+      "name_ja": "陶器",
+      "name_en": "Ceramic",
+      "description": "焼き物、磁器。熱に強く、繊細な加工が可能。",
+      "photo_hints": ["茶碗", "皿", "湯呑み", "花瓶", "土鍋", "マグカップ", "陶器"],
+      "stat_affinity": ["DEF", "MAG"]
+    },
+    "liquid": {
+      "id": "liquid",
+      "name_ja": "液体",
+      "name_en": "Liquid",
+      "description": "水、油、飲料など。流動性を持ち、変幻自在。",
+      "photo_hints": ["水", "コーヒー", "ジュース", "油", "インク", "洗剤", "牛乳"],
+      "stat_affinity": ["MAG", "VIT"]
+    }
+  },
+
+  "essences": {
+    "attack": {
+      "id": "attack",
+      "name_ja": "攻撃",
+      "name_en": "Attack",
+      "description": "破壊や侵害を意図するもの。",
+      "photo_hints": ["刃物", "ナイフ", "ハサミ", "針", "尖ったもの"],
+      "stat_affinity": "ATK",
+      "opposite": "defense"
+    },
+    "defense": {
+      "id": "defense",
+      "name_ja": "防御",
+      "name_en": "Defense",
+      "description": "守りや保護を意図するもの。",
+      "photo_hints": ["蓋", "ケース", "カバー", "鎧", "盾っぽい形"],
+      "stat_affinity": "DEF",
+      "opposite": "attack"
+    },
+    "control": {
+      "id": "control",
+      "name_ja": "操作",
+      "name_en": "Control",
+      "description": "何かを制御・操作するもの。",
+      "photo_hints": ["リモコン", "スイッチ", "ボタン", "ハンドル", "レバー", "マウス"],
+      "stat_affinity": "MAG",
+      "opposite": null
+    },
+    "time": {
+      "id": "time",
+      "name_ja": "時間",
+      "name_en": "Time",
+      "description": "時の流れを示すもの。",
+      "photo_hints": ["時計", "カレンダー", "砂時計", "タイマー", "予定表"],
+      "stat_affinity": "MAG",
+      "opposite": null
+    },
+    "light": {
+      "id": "light",
+      "name_ja": "光",
+      "name_en": "Light",
+      "description": "輝きや照明を持つもの。",
+      "photo_hints": ["ライト", "電球", "ランプ", "太陽", "反射", "鏡"],
+      "stat_affinity": "MAG",
+      "opposite": "dark"
+    },
+    "dark": {
+      "id": "dark",
+      "name_ja": "闇",
+      "name_en": "Dark",
+      "description": "影や暗闘を感じさせるもの。",
+      "photo_hints": ["影", "黒いもの", "暗い場所", "夜景"],
+      "stat_affinity": "ATK",
+      "opposite": "light"
+    },
+    "heal": {
+      "id": "heal",
+      "name_ja": "癒し",
+      "name_en": "Heal",
+      "description": "回復や安らぎをもたらすもの。",
+      "photo_hints": ["薬", "絆創膏", "枕", "ベッド", "お茶", "温かい飲み物"],
+      "stat_affinity": "VIT",
+      "opposite": "destroy"
+    },
+    "knowledge": {
+      "id": "knowledge",
+      "name_ja": "知識",
+      "name_en": "Knowledge",
+      "description": "情報や学びを含むもの。",
+      "photo_hints": ["本", "辞書", "PC", "スマホ", "教科書", "メモ"],
+      "stat_affinity": "MAG",
+      "opposite": null
+    },
+    "move": {
+      "id": "move",
+      "name_ja": "移動",
+      "name_en": "Movement",
+      "description": "動きや移動に関わるもの。",
+      "photo_hints": ["靴", "車輪", "自転車", "電車", "階段", "エスカレーター"],
+      "stat_affinity": "AGI",
+      "opposite": "preserve"
+    },
+    "preserve": {
+      "id": "preserve",
+      "name_ja": "保存",
+      "name_en": "Preservation",
+      "description": "保管や維持に関わるもの。",
+      "photo_hints": ["箱", "容器", "冷蔵庫", "引き出し", "金庫", "タッパー"],
+      "stat_affinity": "VIT",
+      "opposite": "move"
+    },
+    "destroy": {
+      "id": "destroy",
+      "name_ja": "破壊",
+      "name_en": "Destruction",
+      "description": "壊す力を持つもの。",
+      "photo_hints": ["ハンマー", "斧", "爆発物", "壊れたもの"],
+      "stat_affinity": "ATK",
+      "opposite": "heal"
+    },
+    "create": {
+      "id": "create",
+      "name_ja": "創造",
+      "name_en": "Creation",
+      "description": "新しいものを生み出す力。",
+      "photo_hints": ["絵の具", "粘土", "工具", "楽器", "カメラ", "筆"],
+      "stat_affinity": "MAG",
+      "opposite": "destroy"
+    }
+  },
+
+  "quality": {
+    "1": { "name_ja": "ガラクタ", "name_en": "Junk", "multiplier": 0.5 },
+    "2": { "name_ja": "並", "name_en": "Common", "multiplier": 1.0 },
+    "3": { "name_ja": "良品", "name_en": "Good", "multiplier": 1.5 },
+    "4": { "name_ja": "希少", "name_en": "Rare", "multiplier": 2.0 },
+    "5": { "name_ja": "至宝", "name_en": "Treasure", "multiplier": 3.0 }
+  },
+
+  "quality_determination": {
+    "description": "写真の鮮明さ、構図、被写体の状態などから品質を決定",
+    "factors": [
+      { "factor": "clarity", "weight": 0.3, "description": "画像の鮮明さ" },
+      { "factor": "composition", "weight": 0.2, "description": "構図の良さ" },
+      { "factor": "uniqueness", "weight": 0.3, "description": "被写体の珍しさ" },
+      { "factor": "condition", "weight": 0.2, "description": "被写体の状態" }
+    ],
+    "random_variance": 1,
+    "note": "最終的には±1のランダム補正を加える"
+  },
+
+  "signature_rules": {
+    "description": "同一物体の再現性を担保するためのルール",
+    "priority": [
+      "同じ署名が存在する場合、前回の判定結果を優先",
+      "署名が近い場合（閾値0.8以上）、材質・概念を前回に寄せる",
+      "品質のみランダム要素を許容（±1）"
+    ],
+    "signature_components": [
+      "object_category",
+      "dominant_material",
+      "primary_essence",
+      "visual_hash"
+    ]
+  }
+}

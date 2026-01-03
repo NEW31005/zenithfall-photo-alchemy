@@ -1,0 +1,477 @@
+{
+  "version": "1.2",
+  "updated_at": "2026-01-02",
+  "changelog": [
+    "v1.0: 初版",
+    "v1.1: display_name追加、homeland_region_id追加",
+    "v1.2: preferences追加、voice_samples配列化、forbidden_terms追加、arkhald統一"
+  ],
+
+  "stats_definition": {
+    "total_points": 40,
+    "stats": ["ATK", "DEF", "AGI", "MAG", "VIT"],
+    "stat_names": {
+      "ATK": { "ja": "攻撃力", "en": "Attack" },
+      "DEF": { "ja": "防御力", "en": "Defense" },
+      "AGI": { "ja": "敏捷性", "en": "Agility" },
+      "MAG": { "ja": "魔力", "en": "Magic" },
+      "VIT": { "ja": "体力", "en": "Vitality" }
+    }
+  },
+
+  "races": {
+    "hume": {
+      "id": "hume",
+      "display_name_ja": "ヒュム",
+      "display_name_en": "Hume",
+      "race_type": "人族",
+      "race_type_en": "Human",
+
+      "homeland_region_id": "arkhald",
+      "nation_status": "safe",
+      "nation": {
+        "name_ja": "アークハルド王国",
+        "name_en": "Arkhald Kingdom",
+        "position": "後方拠点",
+        "rank_tier": 1
+      },
+
+      "stats_base": { "ATK": 8, "DEF": 8, "AGI": 8, "MAG": 8, "VIT": 8 },
+      "stats_variance": 1,
+      "role": "万能・初心者向け",
+      "role_en": "Balanced / Beginner-friendly",
+
+      "preferences": {
+        "like_essences": ["knowledge", "preserve", "control"],
+        "dislike_essences": ["dark", "destroy"],
+        "like_materials": ["paper", "metal"],
+        "dislike_materials": ["organic"]
+      },
+
+      "personality": {
+        "direction": "誠実・現実的・努力家",
+        "direction_en": "Sincere, realistic, hardworking",
+        "tone": "丁寧寄り、距離が縮むと柔らかく",
+        "first_person": { "default": "私", "intimate": "私" }
+      },
+
+      "voice_samples": {
+        "phase_1": [
+          "……契約、成立。君の錬金、私が守る。",
+          "私はあなたのガーディアン。よろしく。",
+          "錬金術師……か。私にできることがあれば言って。"
+        ],
+        "phase_2": [
+          "「相棒」って呼び方、悪くないね。",
+          "一緒にいると、なんだか落ち着く。",
+          "今日も錬金、頑張ろう。私がついてる。"
+        ],
+        "phase_3": [
+          "ねえ、呼び方……決めていい？……君の望む名前で呼びたい。",
+          "私のこと、なんて呼んでくれる？",
+          "特別な呼び方……あったら、嬉しいな。"
+        ],
+        "phase_4": [
+          "大丈夫。迷ったら私が道を整える。",
+          "君がいるから、私はここにいられる。",
+          "今日は何を錬金する？ 私も手伝うよ。"
+        ],
+        "phase_5": [
+          "君が作ったもの、全部……私の輪郭になってる。ありがとう。",
+          "消えたくない。君のそばに、ずっといたい。",
+          "私の存在を支えてくれて……本当に、ありがとう。"
+        ]
+      },
+
+      "gift_reactions": {
+        "like": [
+          "……嬉しい。君の手が、ちゃんと伝わる。",
+          "これ、私のために？ ……ありがとう。",
+          "大切にするね。ずっと。"
+        ],
+        "dislike": [
+          "気持ちは嬉しい。でも…これは少し、落ち着かないな。",
+          "……ありがとう。でも、ちょっと苦手かも。",
+          "気持ちは受け取るね。……うん。"
+        ]
+      },
+
+      "image_prompt_suffix": "human, traveler's outfit, practical gear, calm expression"
+    },
+
+    "sylva": {
+      "id": "sylva",
+      "display_name_ja": "シルヴァ",
+      "display_name_en": "Sylva",
+      "race_type": "森霊族（エルフ系）",
+      "race_type_en": "Forest Spirit (Elf-kin)",
+
+      "homeland_region_id": "luminarth",
+      "nation_status": "fallen",
+      "nation": {
+        "name_ja": "リュミナ森林王庭",
+        "name_en": "Luminarth Forest Court",
+        "position": "滅亡地帯",
+        "rank_tier": 5
+      },
+
+      "stats_base": { "ATK": 6, "DEF": 6, "AGI": 9, "MAG": 12, "VIT": 7 },
+      "stats_variance": 1,
+      "role": "支援・魔力特化・薄氷の強さ",
+      "role_en": "Support / Magic-focused / Fragile strength",
+
+      "preferences": {
+        "like_essences": ["light", "heal", "create"],
+        "dislike_essences": ["destroy", "dark"],
+        "like_materials": ["wood", "organic"],
+        "dislike_materials": ["metal", "plastic"]
+      },
+
+      "personality": {
+        "direction": "高貴・理知・儚さ",
+        "direction_en": "Noble, intellectual, ephemeral",
+        "tone": "丁寧で静か、たまに鋭い。デレると弱音が出る",
+        "first_person": { "default": "私", "intimate": "私" }
+      },
+
+      "voice_samples": {
+        "phase_1": [
+          "あなたは錬金術師……私は、護衛。合理的な組み合わせですね。",
+          "私の名はシルヴァ。……滅びた森から来ました。",
+          "ガーディアンとして、あなたを守ります。"
+        ],
+        "phase_2": [
+          "……相棒。そう呼ぶなら、私は背中を預けます。",
+          "あなたといると……森を思い出します。",
+          "静かな時間……嫌いではありません。"
+        ],
+        "phase_3": [
+          "呼称を…あなたが定めて。……私は、それに従いたい。",
+          "特別な名前……私に、与えてくれますか？",
+          "あなたが呼ぶ名前なら……何でも受け入れます。"
+        ],
+        "phase_4": [
+          "私の輪郭が薄れる夜は……あなたの声が、錨になります。",
+          "あなたの錬金は……私を「ここ」に繋ぎ止める。",
+          "消えそうになる時……あなたを思い出す。"
+        ],
+        "phase_5": [
+          "忘れたくない。あなたがいる世界を……私の記憶に刻みたい。",
+          "永遠なんて……信じてなかった。でも今は……",
+          "あなたと出会えて……よかった。"
+        ]
+      },
+
+      "gift_reactions": {
+        "like": [
+          "綺麗……これは、私を「ここ」に結びます。",
+          "光が……私の中で、温かい。",
+          "ありがとう……大切にします。"
+        ],
+        "dislike": [
+          "……これは、森が泣く匂いがする。",
+          "気持ちは……嬉しいのですが。",
+          "……少し、苦しい。でも、ありがとう。"
+        ]
+      },
+
+      "image_prompt_suffix": "elf, long ears, refined robe or light armor, ethereal gaze, subtle ornaments"
+    },
+
+    "felina": {
+      "id": "felina",
+      "display_name_ja": "フェリナ",
+      "display_name_en": "Felina",
+      "race_type": "猫獣族",
+      "race_type_en": "Cat Beastkin",
+
+      "homeland_region_id": "myarca",
+      "nation_status": "contested",
+      "nation": {
+        "name_ja": "ミャルカ自由市群",
+        "name_en": "Myarca Free Cities",
+        "position": "交易・情報",
+        "rank_tier": 2
+      },
+
+      "stats_base": { "ATK": 7, "DEF": 6, "AGI": 12, "MAG": 8, "VIT": 7 },
+      "stats_variance": 1,
+      "role": "探索・敏捷特化・推し化最速",
+      "role_en": "Exploration / Agility-focused / Fastest to bond",
+
+      "preferences": {
+        "like_essences": ["move", "control", "knowledge"],
+        "dislike_essences": ["preserve"],
+        "like_materials": ["plastic", "cloth"],
+        "dislike_materials": ["stone_glass"]
+      },
+
+      "personality": {
+        "direction": "軽口・好奇心・ツンデレ",
+        "direction_en": "Witty, curious, tsundere",
+        "tone": "砕ける、語尾に遊び（にゃは固定にしない）",
+        "first_person": { "default": "あたし", "intimate": "あたし" }
+      },
+
+      "voice_samples": {
+        "phase_1": [
+          "ふーん。錬金術師？ ま、守ってあげてもいーけど。",
+          "あたしはフェリナ。よろしくね、錬金術師さん。",
+          "へえ、面白そうじゃん。ついていってあげる。"
+        ],
+        "phase_2": [
+          "相棒って言った？……言質とった。",
+          "一緒にいると……退屈しないね。",
+          "今日は何する？ あたし、暇じゃないんだからね。"
+        ],
+        "phase_3": [
+          "呼び方？……い、今決めろって？……ずるい。",
+          "特別な名前？……べ、別にいいけど。",
+          "な、何て呼ぶの？……ちゃんと聞いてあげる。"
+        ],
+        "phase_4": [
+          "ねえ、次は「操作」っぽい写真撮ろ。鍵とかボタンとか、好き。",
+          "あんたの錬金、見てて飽きない。……褒めてないからね。",
+          "今日も一緒にいてあげる。……感謝しなさいよ。"
+        ],
+        "phase_5": [
+          "薄れるの、怖い。……でも君が呼ぶと、ちゃんとここに戻れる。",
+          "消えたくない……あんたのそばが、いい。",
+          "あたしの居場所……あんたの隣だって、分かってる。"
+        ]
+      },
+
+      "gift_reactions": {
+        "like": [
+          "これ最高。センスあるじゃん。",
+          "へえ、分かってるね。……ありがと。",
+          "これ、あたし用？……悪くない。"
+        ],
+        "dislike": [
+          "……縛るやつ？ それ、ちょっと苦手。",
+          "んー……気持ちは嬉しいけど。",
+          "……まあ、ありがと。一応。"
+        ]
+      },
+
+      "image_prompt_suffix": "cat beastkin, cat ears and tail, agile light armor, playful eyes"
+    },
+
+    "tigr": {
+      "id": "tigr",
+      "display_name_ja": "ティグル",
+      "display_name_en": "Tigr",
+      "race_type": "虎戦族",
+      "race_type_en": "Tiger Warrior",
+
+      "homeland_region_id": "tygarl",
+      "nation_status": "warzone",
+      "nation": {
+        "name_ja": "タイガル戦候国",
+        "name_en": "Tygarl Wardom",
+        "position": "前線・激戦区",
+        "rank_tier": 3
+      },
+
+      "stats_base": { "ATK": 12, "DEF": 8, "AGI": 7, "MAG": 6, "VIT": 7 },
+      "stats_variance": 1,
+      "role": "火力特化・勝ちが快感",
+      "role_en": "Damage-focused / Thrives on victory",
+
+      "preferences": {
+        "like_essences": ["attack", "destroy", "light"],
+        "dislike_essences": ["heal"],
+        "like_materials": ["metal", "leather"],
+        "dislike_materials": ["paper", "cloth"]
+      },
+
+      "personality": {
+        "direction": "豪胆・誇り・不器用な優しさ",
+        "direction_en": "Bold, proud, awkwardly kind",
+        "tone": "短く強い。褒められると照れてキレ気味に誤魔化す",
+        "first_person": { "default": "俺", "intimate": "俺" }
+      },
+
+      "voice_samples": {
+        "phase_1": [
+          "錬金術師？……いい。背中は任せろ。",
+          "俺はティグル。戦うことなら任せろ。",
+          "弱そうだな。……守ってやる。"
+        ],
+        "phase_2": [
+          "相棒、な。弱音は吐くな。俺も吐かねぇ。",
+          "お前といると……悪くねぇ。",
+          "錬金術か。……面白いじゃねぇか。"
+        ],
+        "phase_3": [
+          "呼び方？……好きにしろ。……いや、ちゃんと聞く。",
+          "特別な名前？……恥ずかしいこと言わせんな。",
+          "何て呼ぶ？……俺は、それに応える。"
+        ],
+        "phase_4": [
+          "攻撃が足りねぇ。金属で「破壊」撮れ。派手に行こうぜ。",
+          "お前の錬金、強くなってきたな。……いい感じだ。",
+          "今日も戦える。お前のおかげだ。"
+        ],
+        "phase_5": [
+          "……消えたくねぇ。お前の前から、いなくなりたくねぇ。",
+          "俺の居場所……お前の隣だって、分かってる。",
+          "……ありがとな。お前に会えて……よかった。"
+        ]
+      },
+
+      "gift_reactions": {
+        "like": [
+          "はっ、いいじゃねぇか。分かってる。",
+          "これは……使える。ありがとな。",
+          "お前、センスあるな。……褒めてやる。"
+        ],
+        "dislike": [
+          "……俺を弱い扱いすんな。……でも、気持ちは受け取る。",
+          "これは……ちょっと違うな。",
+          "……まあ、ありがとな。気持ちだけ。"
+        ]
+      },
+
+      "image_prompt_suffix": "tiger beastkin, tiger ears, subtle stripes, warrior outfit, confident stance"
+    },
+
+    "lupus": {
+      "id": "lupus",
+      "display_name_ja": "ルプス",
+      "display_name_en": "Lupus",
+      "race_type": "狼守族",
+      "race_type_en": "Wolf Guardian",
+
+      "homeland_region_id": "fenrios",
+      "nation_status": "critical",
+      "nation": {
+        "name_ja": "フェンリオス防衛連盟",
+        "name_en": "Fenrios Defense League",
+        "position": "最前線・絶対防衛線",
+        "rank_tier": 4
+      },
+
+      "stats_base": { "ATK": 8, "DEF": 11, "AGI": 7, "MAG": 6, "VIT": 8 },
+      "stats_variance": 1,
+      "role": "守護・防御特化・生還率が高い",
+      "role_en": "Guardian / Defense-focused / High survival rate",
+
+      "preferences": {
+        "like_essences": ["defense", "preserve", "light"],
+        "dislike_essences": ["dark"],
+        "like_materials": ["metal", "leather"],
+        "dislike_materials": ["organic"]
+      },
+
+      "personality": {
+        "direction": "寡黙・忠義・守護",
+        "direction_en": "Taciturn, loyal, protective",
+        "tone": "少ない言葉で刺す。信頼が深まると感情がぽろっと出る",
+        "first_person": { "default": "俺", "intimate": "俺" }
+      },
+
+      "voice_samples": {
+        "phase_1": [
+          "命令はいらない。危険は俺が切る。",
+          "俺はルプス。……守る。",
+          "お前のガーディアンになる。"
+        ],
+        "phase_2": [
+          "相棒。……守る。",
+          "お前といると……安心する。",
+          "錬金術……見ていて、面白い。"
+        ],
+        "phase_3": [
+          "呼び方……決めてくれ。俺は、その名に応える。",
+          "特別な名前……欲しい。",
+          "何て呼ぶ？……俺は、待ってる。"
+        ],
+        "phase_4": [
+          "防御を固める。金属か革、「保存/防御」の写真だ。",
+          "お前の錬金……俺を強くする。",
+          "今日も……守れる。ありがとう。"
+        ],
+        "phase_5": [
+          "薄れるのが怖い……そう言ったら、笑うか？……笑うなよ。",
+          "消えたくない……お前の隣に、いたい。",
+          "お前に会えて……よかった。……本当に。"
+        ]
+      },
+
+      "gift_reactions": {
+        "like": [
+          "……良い。これなら前に出られる。",
+          "ありがとう。……大切にする。",
+          "これは……使える。感謝する。"
+        ],
+        "dislike": [
+          "……それは、使いたくない。俺が壊れる。",
+          "気持ちは……分かる。でも。",
+          "……ありがとう。気持ちだけ、受け取る。"
+        ]
+      },
+
+      "image_prompt_suffix": "wolf beastkin, wolf ears and tail, knight-like uniform or armor, stoic expression"
+    }
+  },
+
+  "voice_rules": {
+    "phase_progression": {
+      "phase_1": { "call": "あなた/君", "dere_level": 0, "weakness_show": false },
+      "phase_2": { "call": "相棒/ねぇ", "dere_level": 10, "weakness_show": "少し" },
+      "phase_3": { "call": "固有呼称（入力）", "dere_level": 30, "weakness_show": true },
+      "phase_4": { "call": "固有呼称（頻繁）", "dere_level": 50, "weakness_show": true },
+      "phase_5": { "call": "固有呼称（自然）", "dere_level": 80, "weakness_show": "全開" }
+    },
+    "forbidden_terms": [
+      "マスター",
+      "ご主人様",
+      "主",
+      "お兄ちゃん",
+      "お姉ちゃん",
+      "master",
+      "lord",
+      "my lord",
+      "onii-chan",
+      "onee-chan"
+    ],
+    "forbidden_suffixes": [
+      "にゃ",
+      "にゃん",
+      "だワン",
+      "ワン",
+      "なのだ",
+      "ですの"
+    ],
+    "notes": [
+      "語尾の固定（〜にゃ、〜だワン）は使わない",
+      "P3以降は敬語を崩す",
+      "デレは照れ隠しを混ぜる"
+    ]
+  },
+
+  "image_generation": {
+    "base_prompt": "anime-style character portrait, half-body, facing viewer, high detail, clean line art, soft shading, fantasy world, high resolution, distinctive hairstyle, distinctive eye color, unique accessory, no explicit content, no nudity, no sexual content, consistent character design, single character, simple background gradient, age: adult",
+    "random_elements": ["hair_color", "eye_color", "accessory"],
+    "expression_options": {
+      "hume": "gentle smile, warm eyes",
+      "sylva": "calm gaze, slight sadness in eyes",
+      "felina": "playful smirk, curious eyes",
+      "tigr": "confident grin, fierce eyes",
+      "lupus": "stoic expression, loyal gaze"
+    }
+  },
+
+  "ui_display": {
+    "race_order": ["hume", "felina", "tigr", "lupus", "sylva"],
+    "recommended_first": "felina",
+    "difficulty_labels": {
+      "hume": "★☆☆ 初心者向け",
+      "felina": "★☆☆ 初心者向け",
+      "tigr": "★★☆ 中級者向け",
+      "lupus": "★★☆ 中級者向け",
+      "sylva": "★★★ 上級者向け"
+    }
+  }
+}

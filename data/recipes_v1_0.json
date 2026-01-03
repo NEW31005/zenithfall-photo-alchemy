@@ -1,0 +1,975 @@
+{
+  "version": "1.0",
+  "updated_at": "2026-01-02",
+  "changelog": [
+    "v0.2: 初版（Rank1-3）",
+    "v1.0: Rank4/5触媒追加、catalyst_id統一、name_ja/name_en追加"
+  ],
+  "meta": {
+    "total_recipes": 30,
+    "total_gifts": 8,
+    "total_junk": 10,
+    "slot_rules": {
+      "rank_1": 2,
+      "rank_2": 3,
+      "rank_3": 4
+    },
+    "quality_source": "photo_materials_only",
+    "catalyst_slot": "free"
+  },
+
+  "recipes": [
+    {
+      "dict_no": "No.001",
+      "name": "旅人の短剣",
+      "name_en": "Traveler's Dagger",
+      "category": "weapon",
+      "rank": 1,
+      "slot_cost": 2,
+      "main_stat": "ATK",
+      "stat_bonus": { "ATK": 2, "DEF": 0, "AGI": 0, "MAG": 0, "VIT": 0 },
+      "requirements": {
+        "materials": ["metal"],
+        "essences": ["attack", "control"],
+        "essence_logic": "OR",
+        "quality_sum": 6
+      },
+      "catalyst": {
+        "id": "cat_r1_training_stone",
+        "name": "訓練用の石"
+      },
+      "flavor": "薄い刃でも、意志は折れない。",
+      "rarity": "common"
+    },
+    {
+      "dict_no": "No.002",
+      "name": "朽ち木の棍",
+      "name_en": "Weathered Cudgel",
+      "category": "weapon",
+      "rank": 1,
+      "slot_cost": 2,
+      "main_stat": "ATK",
+      "stat_bonus": { "ATK": 2, "DEF": 1, "AGI": 0, "MAG": 0, "VIT": 0 },
+      "requirements": {
+        "materials": ["wood"],
+        "essences": ["preserve", "attack", "defense"],
+        "essence_logic": "preserve AND (attack OR defense)",
+        "quality_sum": 6
+      },
+      "catalyst": {
+        "id": "cat_r1_rotted_wood",
+        "name": "朽ちた木材"
+      },
+      "flavor": "堅実。折れない。それだけで十分。",
+      "rarity": "common"
+    },
+    {
+      "dict_no": "No.003",
+      "name": "錆鉄の小盾",
+      "name_en": "Rusted Iron Buckler",
+      "category": "shield",
+      "rank": 1,
+      "slot_cost": 2,
+      "main_stat": "DEF",
+      "stat_bonus": { "ATK": 0, "DEF": 3, "AGI": 0, "MAG": 0, "VIT": 0 },
+      "requirements": {
+        "materials": ["metal"],
+        "essences": ["defense"],
+        "essence_logic": "AND",
+        "quality_sum": 5
+      },
+      "catalyst": {
+        "id": "cat_r1_rusted_iron",
+        "name": "錆びた鉄塊"
+      },
+      "flavor": "錆びても、まだ守れる。",
+      "rarity": "common"
+    },
+    {
+      "dict_no": "No.004",
+      "name": "つぎはぎ革鎧",
+      "name_en": "Patchwork Leather Armor",
+      "category": "armor",
+      "rank": 1,
+      "slot_cost": 2,
+      "main_stat": "DEF",
+      "stat_bonus": { "ATK": 0, "DEF": 2, "AGI": 0, "MAG": 0, "VIT": 1 },
+      "requirements": {
+        "materials": ["leather"],
+        "essences": ["defense"],
+        "essence_logic": "AND",
+        "quality_sum": 6
+      },
+      "catalyst": {
+        "id": "cat_r1_worn_leather",
+        "name": "ボロ革"
+      },
+      "flavor": "見た目は悪い。でも命は守る。",
+      "rarity": "common"
+    },
+    {
+      "dict_no": "No.005",
+      "name": "薬草の包帯",
+      "name_en": "Herbal Bandage",
+      "category": "consumable",
+      "rank": 1,
+      "slot_cost": 2,
+      "main_stat": "VIT",
+      "stat_bonus": { "ATK": 0, "DEF": 0, "AGI": 0, "MAG": 0, "VIT": 0 },
+      "effect": { "type": "heal", "value": 10 },
+      "requirements": {
+        "materials": ["cloth", "paper"],
+        "materials_logic": "OR",
+        "essences": ["heal"],
+        "essence_logic": "AND",
+        "quality_sum": 5
+      },
+      "catalyst": {
+        "id": "cat_r1_dried_herb",
+        "name": "乾燥薬草"
+      },
+      "flavor": "傷に巻けば、明日が来る。",
+      "rarity": "common"
+    },
+    {
+      "dict_no": "No.006",
+      "name": "予備袋",
+      "name_en": "Spare Pouch",
+      "category": "utility",
+      "rank": 1,
+      "slot_cost": 2,
+      "main_stat": "VIT",
+      "stat_bonus": { "ATK": 0, "DEF": 0, "AGI": 0, "MAG": 0, "VIT": 1 },
+      "requirements": {
+        "materials": ["cloth", "leather"],
+        "materials_logic": "OR",
+        "essences": ["preserve"],
+        "essence_logic": "AND",
+        "quality_sum": 6
+      },
+      "catalyst": {
+        "id": "cat_r1_rotted_wood",
+        "name": "朽ちた木材"
+      },
+      "flavor": "備えは、生き延びる知恵。",
+      "rarity": "common"
+    },
+    {
+      "dict_no": "No.007",
+      "name": "訓練の腕輪",
+      "name_en": "Training Bracelet",
+      "category": "accessory",
+      "rank": 1,
+      "slot_cost": 2,
+      "main_stat": "ATK",
+      "stat_bonus": { "ATK": 1, "DEF": 0, "AGI": 0, "MAG": 0, "VIT": 0 },
+      "requirements": {
+        "materials": ["metal", "stone_glass"],
+        "materials_logic": "OR",
+        "essences": ["attack"],
+        "essence_logic": "AND",
+        "quality_sum": 6
+      },
+      "catalyst": {
+        "id": "cat_r1_training_stone",
+        "name": "訓練用の石"
+      },
+      "flavor": "握りしめれば、勇気が湧く。",
+      "rarity": "common"
+    },
+    {
+      "dict_no": "No.008",
+      "name": "防刃の留め具",
+      "name_en": "Blade-proof Clasp",
+      "category": "accessory",
+      "rank": 1,
+      "slot_cost": 2,
+      "main_stat": "DEF",
+      "stat_bonus": { "ATK": 0, "DEF": 1, "AGI": 0, "MAG": 0, "VIT": 0 },
+      "requirements": {
+        "materials": ["metal"],
+        "essences": ["defense", "preserve"],
+        "essence_logic": "OR",
+        "quality_sum": 6
+      },
+      "catalyst": {
+        "id": "cat_r1_rusted_iron",
+        "name": "錆びた鉄塊"
+      },
+      "flavor": "小さな守り。でも確かな守り。",
+      "rarity": "common"
+    },
+    {
+      "dict_no": "No.009",
+      "name": "目覚めの香",
+      "name_en": "Awakening Incense",
+      "category": "consumable",
+      "rank": 1,
+      "slot_cost": 2,
+      "main_stat": "VIT",
+      "stat_bonus": { "ATK": 0, "DEF": 0, "AGI": 0, "MAG": 0, "VIT": 0 },
+      "effect": { "type": "buff", "stat": "AGI", "value": 1, "duration": "1_explore" },
+      "requirements": {
+        "materials": ["organic"],
+        "essences": ["heal", "knowledge"],
+        "essence_logic": "OR",
+        "quality_sum": 7
+      },
+      "catalyst": {
+        "id": "cat_r1_dried_herb",
+        "name": "乾燥薬草"
+      },
+      "flavor": "一息で、意識が澄む。",
+      "rarity": "common"
+    },
+    {
+      "dict_no": "No.010",
+      "name": "簡易修理キット",
+      "name_en": "Simple Repair Kit",
+      "category": "utility",
+      "rank": 1,
+      "slot_cost": 2,
+      "main_stat": "MAG",
+      "stat_bonus": { "ATK": 0, "DEF": 0, "AGI": 0, "MAG": 1, "VIT": 0 },
+      "requirements": {
+        "materials": ["metal"],
+        "materials_extra": ["wood", "leather"],
+        "materials_logic": "metal AND (wood OR leather)",
+        "essences": ["preserve", "control"],
+        "essence_logic": "OR",
+        "quality_sum": 7
+      },
+      "catalyst": {
+        "id": "cat_r1_rotted_wood",
+        "name": "朽ちた木材"
+      },
+      "flavor": "壊れても、直せる。それが錬金術師。",
+      "rarity": "common"
+    },
+
+    {
+      "dict_no": "No.011",
+      "name": "俊足のブーツ",
+      "name_en": "Swiftfoot Boots",
+      "category": "armor",
+      "rank": 2,
+      "slot_cost": 3,
+      "main_stat": "AGI",
+      "stat_bonus": { "ATK": 0, "DEF": 1, "AGI": 3, "MAG": 0, "VIT": 0 },
+      "requirements": {
+        "materials": ["cloth", "leather"],
+        "materials_logic": "OR",
+        "essences": ["move"],
+        "essence_logic": "AND",
+        "quality_sum": 9
+      },
+      "catalyst": {
+        "id": "cat_r2_exotic_silk",
+        "name": "異国の絹"
+      },
+      "flavor": "風より速く。影より静かに。",
+      "rarity": "rare"
+    },
+    {
+      "dict_no": "No.012",
+      "name": "交易の護符",
+      "name_en": "Trader's Talisman",
+      "category": "accessory",
+      "rank": 2,
+      "slot_cost": 3,
+      "main_stat": "VIT",
+      "stat_bonus": { "ATK": 0, "DEF": 0, "AGI": 0, "MAG": 1, "VIT": 2 },
+      "requirements": {
+        "materials": ["metal"],
+        "essences": ["preserve", "knowledge"],
+        "essence_logic": "OR",
+        "quality_sum": 9
+      },
+      "catalyst": {
+        "id": "cat_r2_ancient_coin",
+        "name": "古代硬貨"
+      },
+      "flavor": "取引の神に見守られし者。",
+      "rarity": "rare"
+    },
+    {
+      "dict_no": "No.013",
+      "name": "迷い消しの羅針盤",
+      "name_en": "Wayfinder Compass",
+      "category": "utility",
+      "rank": 2,
+      "slot_cost": 3,
+      "main_stat": "MAG",
+      "stat_bonus": { "ATK": 0, "DEF": 0, "AGI": 1, "MAG": 2, "VIT": 0 },
+      "requirements": {
+        "materials": ["metal", "paper"],
+        "materials_logic": "AND",
+        "essences": ["knowledge", "control"],
+        "essence_logic": "AND",
+        "quality_sum": 10
+      },
+      "catalyst": {
+        "id": "cat_r2_merchant_map",
+        "name": "商人の地図紙"
+      },
+      "flavor": "迷う前に、道は示される。",
+      "rarity": "rare"
+    },
+    {
+      "dict_no": "No.014",
+      "name": "光導の指輪",
+      "name_en": "Lightguide Ring",
+      "category": "accessory",
+      "rank": 2,
+      "slot_cost": 3,
+      "main_stat": "MAG",
+      "stat_bonus": { "ATK": 0, "DEF": 0, "AGI": 0, "MAG": 3, "VIT": 0 },
+      "requirements": {
+        "materials": ["stone_glass", "metal"],
+        "materials_logic": "OR",
+        "essences": ["light"],
+        "essence_logic": "AND",
+        "quality_sum": 10
+      },
+      "catalyst": {
+        "id": "cat_r2_ruin_glass",
+        "name": "廃都のガラス片"
+      },
+      "flavor": "闇の中でも、君の道を照らす。",
+      "rarity": "rare"
+    },
+    {
+      "dict_no": "No.015",
+      "name": "鍵開けの細工具",
+      "name_en": "Lockpick Tools",
+      "category": "utility",
+      "rank": 2,
+      "slot_cost": 3,
+      "main_stat": "MAG",
+      "stat_bonus": { "ATK": 0, "DEF": 0, "AGI": 1, "MAG": 2, "VIT": 0 },
+      "requirements": {
+        "materials": ["metal"],
+        "essences": ["control"],
+        "essence_logic": "AND",
+        "quality_sum": 9
+      },
+      "catalyst": {
+        "id": "cat_r2_smuggled_wood",
+        "name": "密輸の香木"
+      },
+      "flavor": "開かない扉はない。心以外は。",
+      "rarity": "rare"
+    },
+    {
+      "dict_no": "No.016",
+      "name": "風切りマント",
+      "name_en": "Windcutter Cloak",
+      "category": "armor",
+      "rank": 2,
+      "slot_cost": 3,
+      "main_stat": "AGI",
+      "stat_bonus": { "ATK": 0, "DEF": 2, "AGI": 2, "MAG": 0, "VIT": 0 },
+      "requirements": {
+        "materials": ["cloth"],
+        "essences": ["move", "defense", "preserve"],
+        "essence_logic": "move AND (defense OR preserve)",
+        "quality_sum": 10
+      },
+      "catalyst": {
+        "id": "cat_r2_exotic_silk",
+        "name": "異国の絹"
+      },
+      "flavor": "風を纏い、刃をかわす。",
+      "rarity": "rare"
+    },
+    {
+      "dict_no": "No.017",
+      "name": "旅商の小箱",
+      "name_en": "Peddler's Chest",
+      "category": "utility",
+      "rank": 2,
+      "slot_cost": 3,
+      "main_stat": "VIT",
+      "stat_bonus": { "ATK": 0, "DEF": 0, "AGI": 0, "MAG": 0, "VIT": 2 },
+      "requirements": {
+        "materials": ["wood", "metal"],
+        "materials_logic": "AND",
+        "essences": ["preserve"],
+        "essence_logic": "AND",
+        "quality_sum": 9
+      },
+      "catalyst": {
+        "id": "cat_r2_ancient_coin",
+        "name": "古代硬貨"
+      },
+      "flavor": "中身は秘密。でも、大事なもの。",
+      "rarity": "rare"
+    },
+    {
+      "dict_no": "No.018",
+      "name": "硝子の小灯",
+      "name_en": "Glass Lantern",
+      "category": "utility",
+      "rank": 2,
+      "slot_cost": 3,
+      "main_stat": "MAG",
+      "stat_bonus": { "ATK": 0, "DEF": 0, "AGI": 0, "MAG": 2, "VIT": 1 },
+      "requirements": {
+        "materials": ["stone_glass"],
+        "essences": ["light", "heal"],
+        "essence_logic": "OR",
+        "quality_sum": 10
+      },
+      "catalyst": {
+        "id": "cat_r2_ruin_glass",
+        "name": "廃都のガラス片"
+      },
+      "flavor": "小さな光でも、希望になる。",
+      "rarity": "rare"
+    },
+    {
+      "dict_no": "No.019",
+      "name": "香木のしおり",
+      "name_en": "Fragrant Bookmark",
+      "category": "utility",
+      "rank": 2,
+      "slot_cost": 3,
+      "main_stat": "MAG",
+      "stat_bonus": { "ATK": 0, "DEF": 0, "AGI": 0, "MAG": 1, "VIT": 1 },
+      "requirements": {
+        "materials": ["paper", "organic"],
+        "materials_logic": "AND",
+        "essences": ["knowledge", "control"],
+        "essence_logic": "OR",
+        "quality_sum": 9
+      },
+      "catalyst": {
+        "id": "cat_r2_smuggled_wood",
+        "name": "密輸の香木"
+      },
+      "flavor": "ページを開けば、君のことを思い出す。",
+      "rarity": "rare"
+    },
+    {
+      "dict_no": "No.020",
+      "name": "予備動作の腕輪",
+      "name_en": "Readiness Bangle",
+      "category": "accessory",
+      "rank": 2,
+      "slot_cost": 3,
+      "main_stat": "AGI",
+      "stat_bonus": { "ATK": 0, "DEF": 0, "AGI": 2, "MAG": 1, "VIT": 0 },
+      "requirements": {
+        "materials": ["metal"],
+        "essences": ["control", "move", "knowledge"],
+        "essence_logic": "control AND (move OR knowledge)",
+        "quality_sum": 11
+      },
+      "catalyst": {
+        "id": "cat_r2_smuggled_wood",
+        "name": "密輸の香木"
+      },
+      "flavor": "動く前に、もう動いている。",
+      "rarity": "rare"
+    },
+
+    {
+      "dict_no": "No.021",
+      "name": "鋼の大剣",
+      "name_en": "Steel Greatsword",
+      "category": "weapon",
+      "rank": 3,
+      "slot_cost": 4,
+      "main_stat": "ATK",
+      "stat_bonus": { "ATK": 5, "DEF": 0, "AGI": -1, "MAG": 0, "VIT": 0 },
+      "requirements": {
+        "materials": ["metal"],
+        "essences": ["attack"],
+        "essence_logic": "AND",
+        "quality_sum": 13
+      },
+      "catalyst": {
+        "id": "cat_r3_warrior_steel",
+        "name": "戦士の鋼"
+      },
+      "flavor": "重い。だが、それが強さだ。",
+      "rarity": "epic"
+    },
+    {
+      "dict_no": "No.022",
+      "name": "牙裂きの槍",
+      "name_en": "Fang-Rend Spear",
+      "category": "weapon",
+      "rank": 3,
+      "slot_cost": 4,
+      "main_stat": "ATK",
+      "stat_bonus": { "ATK": 4, "DEF": 0, "AGI": 1, "MAG": 0, "VIT": 0 },
+      "requirements": {
+        "materials": ["metal", "organic"],
+        "materials_logic": "OR",
+        "essences": ["destroy", "attack"],
+        "essence_logic": "AND",
+        "quality_sum": 13
+      },
+      "catalyst": {
+        "id": "cat_r3_beast_fang",
+        "name": "魔獣の牙"
+      },
+      "flavor": "獣の怒りを、穂先に宿す。",
+      "rarity": "epic"
+    },
+    {
+      "dict_no": "No.023",
+      "name": "焦げ旗の外套",
+      "name_en": "Charred Banner Cloak",
+      "category": "armor",
+      "rank": 3,
+      "slot_cost": 4,
+      "main_stat": "DEF",
+      "stat_bonus": { "ATK": 0, "DEF": 4, "AGI": 0, "MAG": 1, "VIT": 0 },
+      "requirements": {
+        "materials": ["cloth"],
+        "essences": ["dark", "defense", "preserve"],
+        "essence_logic": "dark AND (defense OR preserve)",
+        "quality_sum": 13
+      },
+      "catalyst": {
+        "id": "cat_r3_charred_flag",
+        "name": "焦げた軍旗"
+      },
+      "flavor": "燃え残った誇りを纏う。",
+      "rarity": "epic"
+    },
+    {
+      "dict_no": "No.024",
+      "name": "英霊刻みの砂時計",
+      "name_en": "Hero-Etched Hourglass",
+      "category": "utility",
+      "rank": 3,
+      "slot_cost": 4,
+      "main_stat": "MAG",
+      "stat_bonus": { "ATK": 0, "DEF": 0, "AGI": 0, "MAG": 4, "VIT": 1 },
+      "requirements": {
+        "materials": ["stone_glass", "organic"],
+        "materials_logic": "AND",
+        "essences": ["time", "knowledge", "preserve"],
+        "essence_logic": "time AND (knowledge OR preserve)",
+        "quality_sum": 14
+      },
+      "catalyst": {
+        "id": "cat_r3_hero_bone",
+        "name": "英霊の骨片"
+      },
+      "flavor": "砂が落ちるたび、英霊の声が聞こえる。",
+      "rarity": "epic"
+    },
+    {
+      "dict_no": "No.025",
+      "name": "呪鉄の指輪",
+      "name_en": "Cursed Iron Ring",
+      "category": "accessory",
+      "rank": 3,
+      "slot_cost": 4,
+      "main_stat": "ATK",
+      "stat_bonus": { "ATK": 3, "DEF": 0, "AGI": 0, "MAG": 0, "VIT": -1 },
+      "requirements": {
+        "materials": ["metal"],
+        "essences": ["dark", "attack", "destroy"],
+        "essence_logic": "dark AND (attack OR destroy)",
+        "quality_sum": 14
+      },
+      "catalyst": {
+        "id": "cat_r3_cursed_metal",
+        "name": "呪われた金属"
+      },
+      "flavor": "呪いを受け入れた者だけが、強くなれる。",
+      "rarity": "epic"
+    },
+    {
+      "dict_no": "No.026",
+      "name": "反撃の腕当て",
+      "name_en": "Counterstrike Vambrace",
+      "category": "armor",
+      "rank": 3,
+      "slot_cost": 4,
+      "main_stat": "DEF",
+      "stat_bonus": { "ATK": 2, "DEF": 3, "AGI": 0, "MAG": 0, "VIT": 0 },
+      "requirements": {
+        "materials": ["metal", "leather"],
+        "materials_logic": "AND",
+        "essences": ["defense", "attack"],
+        "essence_logic": "AND",
+        "quality_sum": 13
+      },
+      "catalyst": {
+        "id": "cat_r3_warrior_steel",
+        "name": "戦士の鋼"
+      },
+      "flavor": "守りながら、斬る。",
+      "rarity": "epic"
+    },
+    {
+      "dict_no": "No.027",
+      "name": "破城の火種",
+      "name_en": "Siegebreaker Ember",
+      "category": "consumable",
+      "rank": 3,
+      "slot_cost": 4,
+      "main_stat": "ATK",
+      "stat_bonus": { "ATK": 0, "DEF": 0, "AGI": 0, "MAG": 0, "VIT": 0 },
+      "effect": { "type": "damage_boost", "value": 50, "duration": "1_battle" },
+      "requirements": {
+        "materials": ["organic", "paper"],
+        "materials_logic": "OR",
+        "essences": ["destroy"],
+        "essence_logic": "AND",
+        "quality_sum": 13
+      },
+      "catalyst": {
+        "id": "cat_r3_beast_fang",
+        "name": "魔獣の牙"
+      },
+      "flavor": "城壁すら、この炎の前には紙同然。",
+      "rarity": "epic"
+    },
+    {
+      "dict_no": "No.028",
+      "name": "影縫いの糸",
+      "name_en": "Shadow-Stitching Thread",
+      "category": "utility",
+      "rank": 3,
+      "slot_cost": 4,
+      "main_stat": "MAG",
+      "stat_bonus": { "ATK": 0, "DEF": 0, "AGI": 2, "MAG": 3, "VIT": 0 },
+      "requirements": {
+        "materials": ["cloth"],
+        "essences": ["dark", "control"],
+        "essence_logic": "AND",
+        "quality_sum": 14
+      },
+      "catalyst": {
+        "id": "cat_r3_charred_flag",
+        "name": "焦げた軍旗"
+      },
+      "flavor": "影を縫い止め、動きを封じる。",
+      "rarity": "epic"
+    },
+    {
+      "dict_no": "No.029",
+      "name": "時止めの小符",
+      "name_en": "Time-Halt Talisman",
+      "category": "consumable",
+      "rank": 3,
+      "slot_cost": 4,
+      "main_stat": "MAG",
+      "stat_bonus": { "ATK": 0, "DEF": 0, "AGI": 0, "MAG": 0, "VIT": 0 },
+      "effect": { "type": "stun", "value": 1, "duration": "1_turn" },
+      "requirements": {
+        "materials": ["paper"],
+        "essences": ["time", "control"],
+        "essence_logic": "AND",
+        "quality_sum": 15
+      },
+      "catalyst": {
+        "id": "cat_r3_hero_bone",
+        "name": "英霊の骨片"
+      },
+      "flavor": "一瞬だけ、世界が止まる。",
+      "rarity": "epic"
+    },
+    {
+      "dict_no": "No.030",
+      "name": "浄化の刃",
+      "name_en": "Purifying Blade",
+      "category": "weapon",
+      "rank": 3,
+      "slot_cost": 4,
+      "main_stat": "ATK",
+      "stat_bonus": { "ATK": 4, "DEF": 1, "AGI": 0, "MAG": 1, "VIT": 0 },
+      "requirements": {
+        "materials": ["metal"],
+        "essences": ["light", "attack", "defense"],
+        "essence_logic": "light AND (attack OR defense)",
+        "quality_sum": 15
+      },
+      "catalyst": {
+        "id": "cat_r3_cursed_metal",
+        "name": "呪われた金属"
+      },
+      "flavor": "闘を素材に、光を通す。それが浄化。",
+      "rarity": "epic"
+    }
+  ],
+
+  "gifts": [
+    {
+      "gift_id": "G1-01",
+      "name": "手編みの腕輪",
+      "name_en": "Hand-Knit Bracelet",
+      "rank": 1,
+      "slot_cost": 2,
+      "requirements": {
+        "materials": ["cloth"],
+        "essences": ["heal"],
+        "essence_logic": "AND",
+        "quality_sum": 6
+      },
+      "catalyst": {
+        "id": "cat_r1_dried_herb",
+        "name": "乾燥薬草"
+      },
+      "affection_base": 1.0,
+      "flavor": "ひと針ひと針に、想いを込めて。",
+      "reaction_like": "これ…あったかい。……作ってくれたの？",
+      "reaction_dislike": "ありがとう。……でも、ちょっと照れる。"
+    },
+    {
+      "gift_id": "G1-02",
+      "name": "木彫りの守り札",
+      "name_en": "Carved Wooden Charm",
+      "rank": 1,
+      "slot_cost": 2,
+      "requirements": {
+        "materials": ["wood"],
+        "essences": ["preserve", "create"],
+        "essence_logic": "OR",
+        "quality_sum": 6
+      },
+      "catalyst": {
+        "id": "cat_r1_rotted_wood",
+        "name": "朽ちた木材"
+      },
+      "affection_base": 1.0,
+      "flavor": "朽ちた木から、新しい守りが生まれる。",
+      "reaction_like": "私が薄れないように…って、思ってくれたの？",
+      "reaction_dislike": "……大事にする。約束。"
+    },
+    {
+      "gift_id": "G2-01",
+      "name": "異国の香袋",
+      "name_en": "Exotic Scent Pouch",
+      "rank": 2,
+      "slot_cost": 3,
+      "requirements": {
+        "materials": ["cloth"],
+        "essences": ["control"],
+        "essence_logic": "AND",
+        "quality_sum": 10
+      },
+      "catalyst": {
+        "id": "cat_r2_smuggled_wood",
+        "name": "密輸の香木"
+      },
+      "affection_base": 1.0,
+      "flavor": "異国の香りが、記憶を呼び起こす。",
+      "reaction_like": "この匂い…懐かしい。どこで見つけたの？",
+      "reaction_dislike": "……ちょっと強いかも。でも、ありがとう。"
+    },
+    {
+      "gift_id": "G2-02",
+      "name": "星空の栞",
+      "name_en": "Starlight Bookmark",
+      "rank": 2,
+      "slot_cost": 3,
+      "requirements": {
+        "materials": ["paper"],
+        "essences": ["light", "knowledge"],
+        "essence_logic": "OR",
+        "quality_sum": 10
+      },
+      "catalyst": {
+        "id": "cat_r2_ruin_glass",
+        "name": "廃都のガラス片"
+      },
+      "affection_base": 1.0,
+      "flavor": "星の光を、紙に閉じ込めた。",
+      "reaction_like": "綺麗……これ、私にくれるの？",
+      "reaction_dislike": "……眩しい。でも、嫌いじゃない。"
+    },
+    {
+      "gift_id": "G2-03",
+      "name": "旅路の合図鈴",
+      "name_en": "Journey's Signal Bell",
+      "rank": 2,
+      "slot_cost": 3,
+      "requirements": {
+        "materials": ["metal"],
+        "essences": ["move"],
+        "essence_logic": "AND",
+        "quality_sum": 11
+      },
+      "catalyst": {
+        "id": "cat_r2_exotic_silk",
+        "name": "異国の絹"
+      },
+      "affection_base": 1.0,
+      "flavor": "鳴れば、君がいる証。",
+      "reaction_like": "これ鳴らしたら、君のところに行っていい？",
+      "reaction_dislike": "……音、綺麗だね。"
+    },
+    {
+      "gift_id": "G3-01",
+      "name": "英霊の花",
+      "name_en": "Hero's Blossom",
+      "rank": 3,
+      "slot_cost": 4,
+      "requirements": {
+        "materials": ["organic"],
+        "essences": ["time"],
+        "essence_logic": "AND",
+        "quality_sum": 14
+      },
+      "catalyst": {
+        "id": "cat_r3_hero_bone",
+        "name": "英霊の骨片"
+      },
+      "affection_base": 1.0,
+      "flavor": "枯れない花。英霊の魂が宿る。",
+      "reaction_like": "……これ、枯れないの？……私みたいに、消えない？",
+      "reaction_dislike": "……ちょっと、重い。でも……ありがとう。"
+    },
+    {
+      "gift_id": "G3-02",
+      "name": "誓いの指輪",
+      "name_en": "Vow Ring",
+      "rank": 3,
+      "slot_cost": 4,
+      "requirements": {
+        "materials": ["metal"],
+        "essences": ["light"],
+        "essence_logic": "AND",
+        "quality_sum": 15
+      },
+      "catalyst": {
+        "id": "cat_r3_warrior_steel",
+        "name": "戦士の鋼"
+      },
+      "affection_base": 1.5,
+      "flavor": "光を纏う誓い。永遠の約束。",
+      "reaction_like": "……これ、本気？……私、受け取っていいの？",
+      "reaction_dislike": "……重い。でも……嬉しい、かも。"
+    },
+    {
+      "gift_id": "G3-03",
+      "name": "影払いの小瓶",
+      "name_en": "Shadow-Banishing Vial",
+      "rank": 3,
+      "slot_cost": 4,
+      "requirements": {
+        "materials": ["stone_glass"],
+        "essences": ["heal", "light"],
+        "essence_logic": "OR",
+        "quality_sum": 15
+      },
+      "catalyst": {
+        "id": "cat_r3_charred_flag",
+        "name": "焦げた軍旗"
+      },
+      "affection_base": 1.0,
+      "flavor": "闇を封じ、光を灯す。",
+      "reaction_like": "私の中の……闘も、これで消える？",
+      "reaction_dislike": "……眩しい。でも、ありがとう。"
+    }
+  ],
+
+  "junk": [
+    {
+      "junk_id": "J001",
+      "name": "自称・伝説の爪楊枝",
+      "name_en": "Self-Proclaimed Legendary Toothpick",
+      "flavor": "折れてる。でも誇らしげ。"
+    },
+    {
+      "junk_id": "J002",
+      "name": "逆向きにしか回らない羅針盤",
+      "name_en": "Reverse-Only Compass",
+      "flavor": "北を指すと思ったら、ずっと南。"
+    },
+    {
+      "junk_id": "J003",
+      "name": "触ると鳴き声が出る石",
+      "name_en": "Squeaky Stone",
+      "flavor": "なぜ。どうして。誰が望んだ。"
+    },
+    {
+      "junk_id": "J004",
+      "name": "永遠に乾かないタオル",
+      "name_en": "Never-Dry Towel",
+      "flavor": "便利そうで不便。絞っても絞っても。"
+    },
+    {
+      "junk_id": "J005",
+      "name": "説教してくる小瓶",
+      "name_en": "Lecturing Bottle",
+      "flavor": "開けるたびに「もっと頑張れ」って。"
+    },
+    {
+      "junk_id": "J006",
+      "name": "絶対に落ちない石",
+      "name_en": "Undroppable Rock",
+      "flavor": "手から離れない。呪いかもしれない。"
+    },
+    {
+      "junk_id": "J007",
+      "name": "未来日付のレシート",
+      "name_en": "Future-Dated Receipt",
+      "flavor": "2099年の買い物記録。誰の？"
+    },
+    {
+      "junk_id": "J008",
+      "name": "影だけ立派な短剣",
+      "name_en": "Shadow-Only Dagger",
+      "flavor": "本体はペラい。影は威厳がある。"
+    },
+    {
+      "junk_id": "J009",
+      "name": "一度だけ神々しい光を放つボタン",
+      "name_en": "One-Time Holy Button",
+      "flavor": "押した。光った。二度と光らない。"
+    },
+    {
+      "junk_id": "J010",
+      "name": "終焉の核（ただの石）",
+      "name_en": "Core of Oblivion (Just a Rock)",
+      "flavor": "名前だけ強そう。中身はただの石ころ。"
+    }
+  ],
+
+  "catalysts": {
+    "rank_1": [
+      { "catalyst_id": "cat_r1_rusted_iron", "name_ja": "錆びた鉄塊", "name_en": "Rusted Iron Chunk", "material": "metal", "essence": "defense" },
+      { "catalyst_id": "cat_r1_rotted_wood", "name_ja": "朽ちた木材", "name_en": "Rotted Wood", "material": "wood", "essence": "preserve" },
+      { "catalyst_id": "cat_r1_worn_leather", "name_ja": "ボロ革", "name_en": "Worn Leather", "material": "leather", "essence": "defense" },
+      { "catalyst_id": "cat_r1_training_stone", "name_ja": "訓練用の石", "name_en": "Training Stone", "material": "stone_glass", "essence": "attack" },
+      { "catalyst_id": "cat_r1_dried_herb", "name_ja": "乾燥薬草", "name_en": "Dried Herb", "material": "organic", "essence": "heal" }
+    ],
+    "rank_2": [
+      { "catalyst_id": "cat_r2_exotic_silk", "name_ja": "異国の絹", "name_en": "Exotic Silk", "material": "cloth", "essence": "move" },
+      { "catalyst_id": "cat_r2_ancient_coin", "name_ja": "古代硬貨", "name_en": "Ancient Coin", "material": "metal", "essence": "preserve" },
+      { "catalyst_id": "cat_r2_merchant_map", "name_ja": "商人の地図紙", "name_en": "Merchant's Map", "material": "paper", "essence": "knowledge" },
+      { "catalyst_id": "cat_r2_ruin_glass", "name_ja": "廃都のガラス片", "name_en": "Ruin Glass Shard", "material": "stone_glass", "essence": "light" },
+      { "catalyst_id": "cat_r2_smuggled_wood", "name_ja": "密輸の香木", "name_en": "Smuggled Fragrant Wood", "material": "organic", "essence": "control" }
+    ],
+    "rank_3": [
+      { "catalyst_id": "cat_r3_warrior_steel", "name_ja": "戦士の鋼", "name_en": "Warrior's Steel", "material": "metal", "essence": "attack" },
+      { "catalyst_id": "cat_r3_beast_fang", "name_ja": "魔獣の牙", "name_en": "Beast Fang", "material": "organic", "essence": "destroy" },
+      { "catalyst_id": "cat_r3_charred_flag", "name_ja": "焦げた軍旗", "name_en": "Charred War Banner", "material": "cloth", "essence": "dark" },
+      { "catalyst_id": "cat_r3_hero_bone", "name_ja": "英霊の骨片", "name_en": "Hero's Bone Fragment", "material": "organic", "essence": "time" },
+      { "catalyst_id": "cat_r3_cursed_metal", "name_ja": "呪われた金属", "name_en": "Cursed Metal", "material": "metal", "essence": "dark" }
+    ],
+    "rank_4": [
+      { "catalyst_id": "cat_r4_mithril", "name_ja": "ミスリル鉱石", "name_en": "Mithril Ore", "material": "metal", "essence": "light" },
+      { "catalyst_id": "cat_r4_holy_water", "name_ja": "聖水の結晶", "name_en": "Holy Water Crystal", "material": "stone_glass", "essence": "heal" },
+      { "catalyst_id": "cat_r4_oath_stone", "name_ja": "誓約の石板", "name_en": "Oath Stone Tablet", "material": "stone_glass", "essence": "defense" },
+      { "catalyst_id": "cat_r4_ice_crystal", "name_ja": "氷狼の毛皮", "name_en": "Ice Wolf Pelt", "material": "leather", "essence": "preserve" },
+      { "catalyst_id": "cat_r4_guardian_iron", "name_ja": "守護者の鉄", "name_en": "Guardian's Iron", "material": "metal", "essence": "defense" }
+    ],
+    "rank_5": [
+      { "catalyst_id": "cat_r5_world_tree_branch", "name_ja": "世界樹の枝", "name_en": "World Tree Branch", "material": "wood", "essence": "create" },
+      { "catalyst_id": "cat_r5_orichalcum", "name_ja": "オリハルコン", "name_en": "Orichalcum", "material": "metal", "essence": "create" },
+      { "catalyst_id": "cat_r5_memory_crystal", "name_ja": "記憶の結晶", "name_en": "Memory Crystal", "material": "stone_glass", "essence": "time" },
+      { "catalyst_id": "cat_r5_blackened_sap", "name_ja": "黒化した樹液", "name_en": "Blackened Sap", "material": "organic", "essence": "dark" },
+      { "catalyst_id": "cat_r5_purification_shard", "name_ja": "祓魔の欠片", "name_en": "Purification Shard", "material": "metal", "essence": "light" }
+    ]
+  }
+}
