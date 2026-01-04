@@ -42,7 +42,7 @@ logger = logging.getLogger("mcp_server")
 # ========================================
 PROTOCOL_VERSION = "2025-06-18"
 SERVER_NAME = "zenithfall-photo-alchemy"
-SERVER_VERSION = "0.3.0"  # SSE対応版
+SERVER_VERSION = "0.3.1"  # SSE対応 + openai/subject自動ID
 
 # ========================================
 # FastAPI App
@@ -238,14 +238,57 @@ if DEBUG_MODE:
 # ========================================
 # ユーザーID管理（簡易版）
 # ========================================
-def get_user_id(request: Request) -> str:
-    """リクエストからユーザーIDを取得（MVPは簡易実装）"""
-    # ヘッダーから取得を試みる
+def extract_openai_subject(body: Any) -> Optional[str]:
+    """Apps SDK が params._meta に openai/subject を付けてくれる場合、それを拾う"""
+    def extract_from_one(req: Dict) -> Optional[str]:
+        if not isinstance(req, dict):
+            return None
+        params = req.get("params") or {}
+        if not isinstance(params, dict):
+            return None
+        meta = params.get("_meta") or {}
+        if not isinstance(meta, dict):
+            return None
+        # openai/subject を探す
+        subject = meta.get("openai/subject")
+        if subject:
+            return str(subject)
+        # 他の可能性のあるキーも試す
+        for key in ["subject", "user_id", "openai_subject"]:
+            val = meta.get(key)
+            if val:
+                return str(val)
+        return None
+
+    if isinstance(body, list):
+        for req in body:
+            s = extract_from_one(req)
+            if s:
+                return s
+        return None
+    return extract_from_one(body)
+
+def get_user_id(request: Request, body: Any = None) -> str:
+    """リクエストからユーザーIDを取得
+    
+    優先順位：
+    1. params._meta.openai/subject（Apps SDK自動ID）
+    2. X-User-ID ヘッダー
+    3. デフォルト
+    """
+    # 1. openai/subject を試す（最優先）
+    if body:
+        subject = extract_openai_subject(body)
+        if subject:
+            logger.info(f"Using openai/subject as user_id: {subject[:8]}...")
+            return f"oa:{subject}"
+    
+    # 2. ヘッダーから取得を試みる
     user_id = request.headers.get("X-User-ID")
     if user_id:
         return user_id
     
-    # なければデフォルト（MVP用）
+    # 3. デフォルト（MVP用）
     return "default-user"
 
 # ========================================
@@ -437,11 +480,26 @@ async def health():
 @app.post("/mcp")
 async def mcp_endpoint(request: Request):
     """MCPプロトコルエンドポイント（SSE対応 - ChatGPT Apps SDK用）"""
-    user_id = get_user_id(request)
     
     try:
         body = await request.json()
         logger.debug(f"MCP Request: {json.dumps(body, ensure_ascii=False)[:500]}")
+        
+        # デバッグ: _meta の内容をログ出力（openai/subject 確認用）
+        if DEBUG_MODE:
+            def log_meta(req):
+                if isinstance(req, dict):
+                    params = req.get("params", {})
+                    if isinstance(params, dict):
+                        meta = params.get("_meta")
+                        if meta:
+                            logger.info(f"_meta found: {json.dumps(meta, ensure_ascii=False)}")
+            if isinstance(body, list):
+                for req in body:
+                    log_meta(req)
+            else:
+                log_meta(body)
+        
     except Exception as e:
         # パースエラーもSSE形式で返す
         async def error_stream():
@@ -457,6 +515,10 @@ async def mcp_endpoint(request: Request):
             media_type="text/event-stream",
             headers={"Cache-Control": "no-cache", "Connection": "keep-alive"}
         )
+    
+    # bodyを渡してopenai/subjectを抽出
+    user_id = get_user_id(request, body)
+    logger.info(f"User ID resolved: {user_id}")
     
     async def generate():
         # バッチリクエスト対応
@@ -483,7 +545,6 @@ async def mcp_endpoint(request: Request):
 @app.post("/mcp/json")
 async def mcp_json_endpoint(request: Request):
     """MCPプロトコルエンドポイント（JSON形式 - デバッグ用）"""
-    user_id = get_user_id(request)
     
     try:
         body = await request.json()
@@ -497,6 +558,9 @@ async def mcp_json_endpoint(request: Request):
                 "id": None
             }
         )
+    
+    # bodyを渡してopenai/subjectを抽出
+    user_id = get_user_id(request, body)
     
     # バッチリクエスト対応
     if isinstance(body, list):
